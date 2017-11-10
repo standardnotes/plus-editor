@@ -22,7 +22,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       lastValue = $('#summernote').summernote('code');
       workingNote.content.text = lastValue;
       workingNote.clientData = clientData;
-      componentManager.saveItem(workingNote);
+      componentManager.replacePendingAndPerformAfterDelay(() => {
+        componentManager.saveItem(workingNote);
+      })
     }
   }
 

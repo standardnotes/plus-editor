@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function save() {
     if(workingNote) {
-      lastValue = editor.getValue();
+      lastValue = $('#summernote').summernote('code');
       workingNote.content.text = lastValue;
       workingNote.clientData = clientData;
       componentManager.saveItem(workingNote);

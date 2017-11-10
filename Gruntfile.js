@@ -80,7 +80,8 @@ module.exports = function(grunt) {
     copy: {
       main: {
         files: [
-          {expand: true, flatten: true, src: ['node_modules/summernote/dist/font/**/*'], dest: 'dist/font/', filter: 'isFile'}
+          {expand: true, flatten: true, src: ['node_modules/summernote/dist/font/**/*'], dest: 'dist/font/', filter: 'isFile'},
+          {expand: true, flatten: true, src: ['node_modules/summernote/dist/summernote.css'], dest: 'dist/', filter: 'isFile'}
         ]
       }
     }

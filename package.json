@@ -5,9 +5,9 @@
   "main": "dist/dist.js",
   "author": "Standard Notes <hello@standardnotes.org>",
   "dependencies": {
-    "summernote": "^0.8.8"
   },
   "devDependencies": {
+    "summernote": "^0.8.8",
     "sn-components-api": "^1.0.14",
     "babel-cli": "^6.18.0",
     "babel-preset-env": "^1.1.1",

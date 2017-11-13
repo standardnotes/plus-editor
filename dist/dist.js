@@ -441,11 +441,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
       if (summernote) {
         ignoreTextChange = true;
         var isHtml = /<[a-z][\s\S]*>/i.test(newText);
+
+        if (initialLoad) {
+          $('#summernote').summernote('fullscreen.toggle');
+        }
+
         if (initialLoad && !isHtml) {
           newText = textToHTML(newText);
         }
+
         summernote.summernote('code', newText);
+
         ignoreTextChange = false;
+        initialLoad = false;
       }
     }
   }
@@ -457,13 +465,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
       maxHeight: null, // set maximum height of editor
       focus: true, // set focus to editable area after initializing summernote
       callbacks: {
+        onInit: function onInit() {},
         onImageUpload: function onImageUpload(files) {
           alert("Until we can encrypt image files, uploads are not currently supported. We recommend using the Image button in the toolbar and copying an image URL instead.");
         }
       }
     });
-
-    $('#summernote').summernote('fullscreen.toggle');
 
     // summernote.change
     $('#summernote').on('summernote.change', function (we, contents, $editable) {

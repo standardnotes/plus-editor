@@ -415,14 +415,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
       lastValue = $('#summernote').summernote('code');
       workingNote.content.text = lastValue;
       workingNote.clientData = clientData;
-      componentManager.replacePendingAndPerformAfterDelay(function () {
-        componentManager.saveItem(workingNote);
-      });
+      componentManager.saveItem(workingNote);
     }
   }
 
   function onReceivedNote(note) {
     workingNote = note;
+
+    // Only update UI on non-metadata updates.
+    if (note.isMetadataUpdate) {
+      return;
+    }
+
     clientData = note.clientData;
     var newText = note.content.text;
 

@@ -28,6 +28,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function onReceivedNote(note) {
     workingNote = note;
+
+    // Only update UI on non-metadata updates.
+    if(note.isMetadataUpdate) {
+      return;
+    }
+
     clientData = note.clientData;
     var newText = note.content.text;
 

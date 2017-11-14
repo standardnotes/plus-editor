@@ -72,7 +72,10 @@ module.exports = function(grunt) {
       },
 
       css: {
-        src: ['dist/app.css', 'node_modules/bootstrap/dist/css/bootstrap.min.css'],
+        options: {
+          separator: '',
+        },
+        src: ['node_modules/bootstrap/dist/css/bootstrap.min.css', 'dist/app.css'],
         dest: 'dist/dist.css',
       }
     },

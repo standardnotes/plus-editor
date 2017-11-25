@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var lastValue, lastUUID;
   var editor;
   var ignoreTextChange = false;
-  var initialLoad = true;
+  var newNoteLoad = true, didToggleFullScreen = false;
 
   function loadComponentManager() {
     var permissions = [{name: "stream-context-item"}]
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if(note.uuid !== lastUUID) {
       // Note changed, reset last values
       lastValue = null;
-      initialLoad = true;
+      newNoteLoad = true;
       lastUUID = note.uuid;
     }
 
@@ -45,25 +45,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
     clientData = note.clientData;
     var newText = note.content.text;
 
-    if(newText !== lastValue) {
-      var summernote = $('#summernote');
-      if(summernote) {
-        ignoreTextChange = true;
-        var isHtml = /<[a-z][\s\S]*>/i.test(newText);
+    if(newText == lastValue) {
+      return;
+    }
 
-        if(initialLoad) {
-          $('#summernote').summernote('fullscreen.toggle');
-        }
+    var summernote = $('#summernote');
+    if(summernote) {
+      ignoreTextChange = true;
+      var isHtml = /<[a-z][\s\S]*>/i.test(newText);
 
-        if(initialLoad && !isHtml) {
-          newText = textToHTML(newText);
-        }
-
-        summernote.summernote('code', newText);
-
-        ignoreTextChange = false;
-        initialLoad = false;
+      if(!didToggleFullScreen) {
+        $('#summernote').summernote('fullscreen.toggle');
+        didToggleFullScreen = true;
       }
+
+      if(newNoteLoad && !isHtml) {
+        newText = textToHTML(newText);
+      }
+
+      summernote.summernote('code', newText);
+
+      ignoreTextChange = false;
+      newNoteLoad = false;
     }
   }
 

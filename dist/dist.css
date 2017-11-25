@@ -27,7 +27,7 @@
 }
 
 .note-editor.note-frame {
-  border: 0;
+  border: 0 !important;
 }
 
 .panel-default {

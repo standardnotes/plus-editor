@@ -494,6 +494,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
       minHeight: null, // set minimum height of editor
       maxHeight: null, // set maximum height of editor
       focus: true, // set focus to editable area after initializing summernote
+      toolbar: [
+      // [groupName, [list of button]]
+      ['para', ['style']], ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']], ['fontsize', ['fontsize', 'fontname']], ['color', ['color']], ['para', ['ul', 'ol', 'paragraph']], ['height', ['height']], ['insert', ['table', 'link', 'hr', 'picture', 'video']], ['misc', ['codeview', 'help']]],
       callbacks: {
         onInit: function onInit() {},
         onImageUpload: function onImageUpload(files) {

@@ -66,7 +66,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
       summernote.summernote('code', newText);
 
       ignoreTextChange = false;
-      newNoteLoad = false;
+
+      if(newNoteLoad) {
+        // Clears history but keeps note contents
+        $('#summernote').summernote('commit');
+        newNoteLoad = false;
+      }
     }
   }
 

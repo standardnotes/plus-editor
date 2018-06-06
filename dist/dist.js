@@ -517,13 +517,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
       summernote.summernote('code', newText);
 
-      ignoreTextChange = false;
-
       if (newNoteLoad) {
-        // Clears history but keeps note contents
+        // Clears history but keeps note contents. Note that this line will triggera summernote.change event,
+        // so be sure to do this inside a `ignoreTextChange` block
         $('#summernote').summernote('commit');
         newNoteLoad = false;
       }
+
+      ignoreTextChange = false;
     }
   }
 

@@ -510,11 +510,28 @@ document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
 
+  function strip(html) {
+    var tmp = document.implementation.createHTMLDocument("New").body;
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+  }
+
+  function truncateString(string) {
+    var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 90;
+
+    if (string.length <= limit) {
+      return string;
+    } else {
+      return string.substring(0, limit) + "...";
+    }
+  }
+
   function save() {
     if (workingNote) {
       lastValue = $('#summernote').summernote('code');
       workingNote.content.text = lastValue;
       workingNote.clientData = clientData;
+      workingNote.content.preview_plain = truncateString(strip(lastValue));
       componentManager.saveItem(workingNote);
     }
   }

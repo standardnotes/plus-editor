@@ -18,11 +18,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
   }
 
+  function strip(html) {
+    var tmp = document.implementation.createHTMLDocument("New").body;
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+  }
+
+  function truncateString(string, limit = 90) {
+    if(string.length <= limit) {
+      return string;
+    } else {
+      return string.substring(0, limit) + "...";
+    }
+  }
+
   function save() {
     if(workingNote) {
       lastValue = $('#summernote').summernote('code');
       workingNote.content.text = lastValue;
       workingNote.clientData = clientData;
+      workingNote.content.preview_plain = truncateString(strip(lastValue));
       componentManager.saveItem(workingNote);
     }
   }

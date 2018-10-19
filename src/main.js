@@ -34,11 +34,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function save() {
     if(workingNote) {
-      lastValue = $('#summernote').summernote('code');
-      workingNote.content.text = lastValue;
-      workingNote.clientData = clientData;
-      workingNote.content.preview_plain = truncateString(strip(lastValue));
-      componentManager.saveItem(workingNote);
+      componentManager.saveItemWithPresave(workingNote, () => {
+        lastValue = $('#summernote').summernote('code');
+        workingNote.clientData = clientData;
+
+        workingNote.content.text = lastValue;
+        workingNote.content.preview_plain = truncateString(strip(lastValue));
+        workingNote.content.preview_html = null;
+      });
     }
   }
 

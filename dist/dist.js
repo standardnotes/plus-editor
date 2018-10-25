@@ -655,6 +655,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
         save();
       }
     });
+
+    $('textarea.note-codable').on('input', function () {
+      save();
+    });
   }
 
   loadEditor();

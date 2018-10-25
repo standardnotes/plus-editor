@@ -125,6 +125,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         save();
       }
     });
+
+    $('textarea.note-codable').on('input', () => {
+      save();
+    })
   }
 
   loadEditor();

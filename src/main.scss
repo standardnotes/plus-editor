@@ -88,6 +88,7 @@ body, html {
 
   label kbd {
     background-color: var(--sn-stylekit-background-color);
+    background-color: var(--sn-stylekit-foreground-color);
   }
 
   .modal-header .close {

@@ -11,6 +11,104 @@ body, html {
   flex-direction: column;
   position: relative;
   height: 100%;
+
+  pre {
+    background-color: var(--sn-stylekit-contrast-background-color);
+    color: var(--sn-stylekit-contrast-foreground-color);
+    border-color: var(--sn-stylekit-contrast-border-color);
+  }
+
+  a {
+    color: var(--sn-stylekit-info-color);
+  }
+
+  .note-editor.fullscreen {
+    background-color: var(--sn-stylekit-background-color);
+  }
+
+  .note-editor.note-frame.fullscreen .note-editable {
+    background-color: var(--sn-stylekit-background-color);
+    color: var(--sn-stylekit-foreground-color);
+  }
+
+  .panel-default > .panel-heading {
+    background-color: var(--sn-stylekit-secondary-background-color);
+  }
+
+  .btn-default {
+    color: var(--sn-stylekit-secondary-foreground-color);
+    background-color: var(--sn-stylekit-secondary-background-color);
+    border-color: var(--sn-stylekit-secondary-border-color);
+  }
+
+  .panel-heading {
+    border-color: var(--sn-stylekit-border-color);
+  }
+
+  .dropdown-menu {
+    background-color: var(--sn-stylekit-background-color);
+  }
+
+  .dropdown-menu > li > a {
+    color: var(--sn-stylekit-foreground-color);
+
+    &:hover {
+      background-color: var(--sn-stylekit-contrast-background-color);
+      color: var(--sn-stylekit-contrast-foreground-color);
+    }
+  }
+
+  .note-color-btn {
+    border-color: var(--sn-stylekit-border-color);
+  }
+
+  .note-color-reset {
+    background-color: var(--sn-stylekit-contrast-background-color);
+    color: var(--sn-stylekit-contrast-foreground-color);
+  }
+
+  .note-palette-title {
+    color: var(--sn-stylekit-info-color);
+  }
+
+  .modal-content {
+    background-color: var(--sn-stylekit-contrast-background-color);
+    color: var(--sn-stylekit-contrast-foreground-color);
+  }
+
+  .modal-header, .modal-footer {
+    border-color: var(--sn-stylekit-contrast-border-color);
+
+    .btn-primary {
+      background-color: var(--sn-stylekit-info-color);
+      color: var(--sn-stylekit-info-contrast-color);
+      border-color: transparent;
+    }
+  }
+
+  label kbd {
+    background-color: var(--sn-stylekit-background-color);
+  }
+
+  .modal-header .close {
+    color: var(--sn-stylekit-foreground-color);
+    text-shadow: none;
+  }
+}
+
+.note-popover, .note-popover .arrow {
+  background-color: var(--sn-stylekit-contrast-background-color);
+  color: var(--sn-stylekit-contrast-foreground-color);
+
+  a {
+    color: var(--sn-stylekit-info-color);
+  }
+
+  button {
+    background-color: var(--sn-stylekit-background-color);
+    color: var(--sn-stylekit-foreground-color);
+    border-color: var(--sn-stylekit-border-color);
+  }
 }
 
 #summernote {

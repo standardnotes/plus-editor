@@ -441,6 +441,7 @@
   resize: none;
 }
 .sn-component input.sk-input.clear {
+  color: var(--sn-stylekit-foreground-color);
   background-color: transparent;
   border: none;
 }
@@ -1906,6 +1907,9 @@ body, html {
 }
 #plus-editor a {
   color: var(--sn-stylekit-info-color);
+}
+#plus-editor .note-editor {
+  -webkit-overflow-scrolling: touch;
 }
 #plus-editor .note-editor.fullscreen {
   background-color: var(--sn-stylekit-background-color);

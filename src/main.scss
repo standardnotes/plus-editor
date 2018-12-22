@@ -33,6 +33,10 @@ body, html {
     color: var(--sn-stylekit-info-color);
   }
 
+  .note-editor {
+     -webkit-overflow-scrolling: touch;
+  }
+
   .note-editor.fullscreen {
     background-color: var(--sn-stylekit-background-color);
   }

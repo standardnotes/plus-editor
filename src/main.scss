@@ -101,6 +101,21 @@ body, html {
     }
   }
 
+  table {
+    border-color: var(--sn-stylekit-contrast-border-color);
+    background-color: var(--sn-stylekit-contrast-background-color);
+    color: var(--sn-stylekit-contrast-foreground-color);
+
+    th, td {
+      border: 1px solid var(--sn-stylekit-contrast-border-color);
+    }
+
+    tr:nth-child(2n) {
+      background-color: var(--sn-stylekit-background-color);
+    }
+  }
+
+
   label kbd {
     background-color: var(--sn-stylekit-background-color);
     background-color: var(--sn-stylekit-foreground-color);

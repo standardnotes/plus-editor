@@ -742,6 +742,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       toolbar: [
       // [groupName, [list of button]]
       ['para', ['style']], ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']], ['fontsize', ['fontsize', 'fontname']], ['color', ['color']], ['para', ['ul', 'ol', 'paragraph']], ['height', ['height']], ['insert', ['table', 'link', 'hr', 'picture', 'video']], ['misc', ['codeview', 'help']]],
+      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica Neue', 'Helvetica', 'Impact', 'Lucida Grande', 'Monospace', 'Roboto', 'system-ui', 'Tahoma', 'Times New Roman', 'Verdana'],
       callbacks: {
         onInit: function onInit() {},
         onImageUpload: function onImageUpload(files) {

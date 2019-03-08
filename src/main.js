@@ -120,6 +120,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         ['insert', ['table', 'link', 'hr', 'picture', 'video']],
         ['misc', ['codeview', 'help']]
       ],
+      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica Neue',
+        'Helvetica', 'Impact', 'Lucida Grande', 'Monospace', 'Roboto', 'system-ui', 'Tahoma',
+        'Times New Roman', 'Verdana'],
       callbacks: {
         onInit: function() {},
         onImageUpload: function (files) {

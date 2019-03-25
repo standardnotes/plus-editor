@@ -1899,6 +1899,9 @@ body, html {
   height: 100%;
   font-size: var(--sn-stylekit-font-size-editor);
 }
+#plus-editor .note-editor.note-frame.fullscreen {
+  position: relative !important;
+}
 #plus-editor pre {
   background-color: var(--sn-stylekit-contrast-background-color);
   color: var(--sn-stylekit-contrast-foreground-color);

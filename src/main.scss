@@ -6,7 +6,6 @@ body, html {
   background-color: transparent;
 }
 
-
 #summernote {
   flex: 1 1 auto;
   width: 100%;
@@ -15,12 +14,18 @@ body, html {
   font-size: var(--sn-stylekit-font-size-editor);
 }
 
+
 #plus-editor {
   display: flex;
   flex-direction: column;
   position: relative;
   height: 100%;
   font-size: var(--sn-stylekit-font-size-editor);
+
+  .note-editor.note-frame.fullscreen {
+    // On Mobile, resizing the webview to avoid keyboard causes the option bar to be offset because its position is fixed.
+    position: relative !important;
+  }
 
   pre {
     background-color: var(--sn-stylekit-contrast-background-color);

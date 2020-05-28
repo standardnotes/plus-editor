@@ -117,6 +117,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         ['color', ['color']],
         ['para', ['ul', 'ol', 'paragraph']],
         ['height', ['height']],
+        ['insert',['ltr','rtl']],
         ['insert', ['table', 'link', 'hr', 'picture', 'video']],
         ['misc', ['codeview', 'help']]
       ],

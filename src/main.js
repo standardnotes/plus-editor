@@ -134,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     // summernote.change
     $('#summernote').on('summernote.change', function(we, contents, $editable) {
+      $('.note-editing-area span[dir="rtl"]').parent().attr("dir", "rtl");
       if(!ignoreTextChange) {
         save();
       }

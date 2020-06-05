@@ -108,7 +108,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       height: 500,                 // set editor height
       minHeight: null,             // set minimum height of editor
       maxHeight: null,             // set maximum height of editor
-      focus: true,                  // set focus to editable area after initializing summernote
+      focus: true,                 // set focus to editable area after initializing summernote
+      tabDisable: true,            // set tab interaction to note only
       toolbar: [
         // [groupName, [list of button]]
         ['para', ['style']],

@@ -1,46 +1,46 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   grunt.initConfig({
 
-  watch: {
-    js: {
-      files: ['src/**/*.js'],
-      tasks: ['concat:app', 'babel', 'browserify', 'concat:lib', 'concat:dist'],
-      options: {
-        spawn: false,
-      },
-    },
-    css: {
-      files: ['src/main.scss'],
-      tasks: ['sass','concat:css', 'copy'],
-      options: {
-        spawn: false,
-      },
-    }
-  },
-
-  sass: {
-    dist: {
-      options: {
-       style: 'expanded',
-       sourcemap: 'none'
-     },
-      files: {
-        'dist/app.css': 'src/main.scss'
-      }
-    }
-  },
-
-   babel: {
+    watch: {
+      js: {
+        files: ['src/**/*.js'],
+        tasks: ['concat:app', 'babel', 'browserify', 'concat:lib', 'concat:dist'],
         options: {
-            sourceMap: true,
-            presets: ['es2015']
+          spawn: false,
         },
-        app: {
-            files: {
-                'dist/app.js': ['dist/app.js']
-            }
+      },
+      css: {
+        files: ['src/main.scss'],
+        tasks: ['sass', 'concat:css', 'copy'],
+        options: {
+          spawn: false,
+        },
+      }
+    },
+
+    sass: {
+      dist: {
+        options: {
+          style: 'expanded',
+          sourcemap: 'none'
+        },
+        files: {
+          'dist/app.css': 'src/main.scss'
         }
+      }
+    },
+
+    babel: {
+      options: {
+        sourceMap: true,
+        presets: ['es2015']
+      },
+      app: {
+        files: {
+          'dist/app.js': ['dist/app.js']
+        }
+      }
     },
 
     browserify: {
@@ -89,9 +89,20 @@ module.exports = function(grunt) {
 
     copy: {
       main: {
-        files: [
-          {expand: true, flatten: true, src: ['node_modules/summernote/dist/font/**/*'], dest: 'dist/font/', filter: 'isFile'},
-          {expand: true, flatten: true, src: ['node_modules/summernote/dist/summernote.css'], dest: 'dist/', filter: 'isFile'}
+        files: [{
+            expand: true,
+            flatten: true,
+            src: ['node_modules/summernote/dist/font/**/*'],
+            dest: 'dist/font/',
+            filter: 'isFile'
+          },
+          {
+            expand: true,
+            flatten: true,
+            src: ['node_modules/summernote/dist/summernote.css'],
+            dest: 'dist/',
+            filter: 'isFile'
+          }
         ]
       }
     }

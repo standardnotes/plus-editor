@@ -710,7 +710,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
       didToggleFullScreen = false;
 
   function loadComponentManager() {
-    var permissions = [{ name: "stream-context-item" }];
+    var permissions = [{
+      name: "stream-context-item"
+    }];
     componentManager = new ComponentManager(permissions, function () {
       // on ready
       var platform = componentManager.platform;

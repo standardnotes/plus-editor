@@ -73,6 +73,9 @@ html {
   background-color: var(--sn-stylekit-contrast-background-color);
   color: var(--sn-stylekit-contrast-foreground-color);
 }
+#plus-editor .note-codable {
+  caret-color: #cccccc;
+}
 #plus-editor .note-color-btn {
   border-color: var(--sn-stylekit-border-color);
 }

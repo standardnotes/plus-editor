@@ -1,20 +1,20 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
-  var componentManager;
-  var workingNote, clientData;
-  var lastValue, lastUUID;
-  var editor;
-  var ignoreTextChange = false;
-  var newNoteLoad = true,
+  let componentManager;
+  let workingNote, clientData;
+  let lastValue, lastUUID;
+  let editor;
+  let ignoreTextChange = false;
+  let newNoteLoad = true,
     didToggleFullScreen = false;
 
   function loadComponentManager() {
-    var permissions = [{
+    const permissions = [{
       name: "stream-context-item"
     }]
     componentManager = new ComponentManager(permissions, function () {
       // on ready
-      var platform = componentManager.platform;
+      const platform = componentManager.platform;
       if (platform) {
         document.body.classList.add(platform);
       }
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }
 
   function strip(html) {
-    var tmp = document.implementation.createHTMLDocument("New").body;
+    const tmp = document.implementation.createHTMLDocument("New").body;
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || "";
   }
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       // Be sure to capture this object as a variable, as workingNote may be reassigned in `streamContextItem`, so by the time
       // you modify it in the presave block, it may not be the same object anymore, so the presave values will not be applied to
       // the right object, and it will save incorrectly.
-      let note = workingNote;
+      const note = workingNote;
 
       componentManager.saveItemWithPresave(note, () => {
         lastValue = $('#summernote').summernote('code');
@@ -73,16 +73,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
     clientData = note.clientData;
-    var newText = note.content.text;
+    let newText = note.content.text;
 
     if (newText == lastValue) {
       return;
     }
 
-    var summernote = $('#summernote');
+    const summernote = $('#summernote');
     if (summernote) {
       ignoreTextChange = true;
-      var isHtml = /<[a-z][\s\S]*>/i.test(newText);
+      const isHtml = /<[a-z][\s\S]*>/i.test(newText);
 
       if (!didToggleFullScreen) {
         $('#summernote').summernote('fullscreen.toggle');

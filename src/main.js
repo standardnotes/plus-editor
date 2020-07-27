@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   function loadComponentManager() {
     const permissions = [{
       name: "stream-context-item"
-    }]
+    }];
     componentManager = new ComponentManager(permissions, function () {
       // on ready
       const platform = componentManager.platform;
@@ -41,9 +41,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   function save() {
     if (workingNote) {
-      // Be sure to capture this object as a variable, as workingNote may be reassigned in `streamContextItem`, so by the time
-      // you modify it in the presave block, it may not be the same object anymore, so the presave values will not be applied to
-      // the right object, and it will save incorrectly.
+      // Be sure to capture this object as a variable, as workingNote may be
+      // reassigned in `streamContextItem`, so by the time you modify it in
+      // the presave block, it may not be the same object anymore, so the
+      // presave values will not be applied to the right object, and it will
+      // save incorrectly.
       const note = workingNote;
 
       componentManager.saveItemWithPresave(note, () => {
@@ -96,8 +98,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
       summernote.summernote('code', newText);
 
       if (newNoteLoad) {
-        // Clears history but keeps note contents. Note that this line will triggera summernote.change event,
-        // so be sure to do this inside a `ignoreTextChange` block
+        // Clears history but keeps note contents. Note that this line will
+        // trigger a summernote.change event, so be sure to do this inside a
+        // `ignoreTextChange` block.
         $('#summernote').summernote('commit');
         newNoteLoad = false;
       }
@@ -113,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       maxHeight: null, // set maximum height of editor
       focus: true, // set focus to editable area after initializing summernote
       tabDisable: true, // set tab interaction to note only
-      showDomainOnlyForAutolink: false, // set autolink to preserve entire link 
+      showDomainOnlyForAutolink: false, // set autolink to preserve whole link
       toolbar: [
         // [groupName, [list of button]]
         ['para', ['style']],
@@ -125,14 +128,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
         ['insert', ['table', 'link', 'hr', 'picture', 'video']],
         ['misc', ['codeview', 'help']]
       ],
-      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
+      fontNames: [
+        'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
         'Helvetica Neue', 'Helvetica', 'Impact', 'Lucida Grande', 'Monospace',
         'Roboto', 'system-ui', 'Tahoma', 'Times New Roman', 'Verdana'
       ],
       callbacks: {
         onInit: function () {},
         onImageUpload: function (files) {
-          alert("Until we can encrypt image files, uploads are not currently supported. We recommend using the Image button in the toolbar and copying an image URL instead.")
+          alert("Until we can encrypt image files, uploads are not currently "
+            + "supported. We recommend using the Image button in the toolbar "
+            + "and copying an image URL instead.");
         }
       }
     });
@@ -154,7 +160,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   loadComponentManager();
 
   function textToHTML(text) {
-    return ((text || "") + "").replace(/\t/g, "    ").replace(/\r\n|\r|\n/g, "<br />");
+    return ((text || "") + "")
+    .replace(/\t/g, "    ")
+    .replace(/\r\n|\r|\n/g, "<br />");
   }
 
 });

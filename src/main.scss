@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   font-family: sans-serif;
   font-size: var(--sn-stylekit-base-font-size);
   height: 100%;
@@ -39,7 +40,7 @@ body, html {
   }
 
   .note-editor {
-     -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
   }
 
   .note-editor.fullscreen {
@@ -51,7 +52,7 @@ body, html {
     color: var(--sn-stylekit-foreground-color);
   }
 
-  .panel-default > .panel-heading {
+  .panel-default>.panel-heading {
     background-color: var(--sn-stylekit-secondary-background-color);
   }
 
@@ -69,7 +70,7 @@ body, html {
     background-color: var(--sn-stylekit-background-color);
   }
 
-  .dropdown-menu > li > a {
+  .dropdown-menu>li>a {
     color: var(--sn-stylekit-foreground-color);
 
     &:hover {
@@ -96,7 +97,8 @@ body, html {
     color: var(--sn-stylekit-contrast-foreground-color);
   }
 
-  .modal-header, .modal-footer {
+  .modal-header,
+  .modal-footer {
     border-color: var(--sn-stylekit-contrast-border-color);
 
     .btn-primary {
@@ -111,7 +113,8 @@ body, html {
     background-color: var(--sn-stylekit-contrast-background-color);
     color: var(--sn-stylekit-contrast-foreground-color);
 
-    th, td {
+    th,
+    td {
       border: 1px solid var(--sn-stylekit-contrast-border-color);
     }
 
@@ -132,7 +135,8 @@ body, html {
   }
 }
 
-.note-popover, .note-popover .arrow {
+.note-popover,
+.note-popover .arrow {
   background-color: var(--sn-stylekit-contrast-background-color);
   color: var(--sn-stylekit-contrast-foreground-color);
 

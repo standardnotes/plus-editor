@@ -1,17 +1,20 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
 
-  var componentManager;
-  var workingNote, clientData;
-  var lastValue, lastUUID;
-  var editor;
-  var ignoreTextChange = false;
-  var newNoteLoad = true, didToggleFullScreen = false;
+  let componentManager;
+  let workingNote, clientData;
+  let lastValue, lastUUID;
+  let editor;
+  let ignoreTextChange = false;
+  let newNoteLoad = true,
+    didToggleFullScreen = false;
 
   function loadComponentManager() {
-    var permissions = [{name: "stream-context-item"}]
-    componentManager = new ComponentManager(permissions, function(){
+    const permissions = [{
+      name: "stream-context-item"
+    }];
+    componentManager = new ComponentManager(permissions, function () {
       // on ready
-      var platform = componentManager.platform;
+      const platform = componentManager.platform;
       if (platform) {
         document.body.classList.add(platform);
       }
@@ -23,13 +26,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function strip(html) {
-    var tmp = document.implementation.createHTMLDocument("New").body;
+    const tmp = document.implementation.createHTMLDocument("New").body;
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || "";
   }
 
   function truncateString(string, limit = 90) {
-    if(string.length <= limit) {
+    if (string.length <= limit) {
       return string;
     } else {
       return string.substring(0, limit) + "...";
@@ -37,11 +40,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function save() {
-    if(workingNote) {
-      // Be sure to capture this object as a variable, as workingNote may be reassigned in `streamContextItem`, so by the time
-      // you modify it in the presave block, it may not be the same object anymore, so the presave values will not be applied to
-      // the right object, and it will save incorrectly.
-      let note = workingNote;
+    if (workingNote) {
+      // Be sure to capture this object as a variable, as workingNote may be
+      // reassigned in `streamContextItem`, so by the time you modify it in
+      // the presave block, it may not be the same object anymore, so the
+      // presave values will not be applied to the right object, and it will
+      // save incorrectly.
+      const note = workingNote;
 
       componentManager.saveItemWithPresave(note, () => {
         lastValue = $('#summernote').summernote('code');
@@ -55,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function onReceivedNote(note) {
-    if(note.uuid !== lastUUID) {
+    if (note.uuid !== lastUUID) {
       // Note changed, reset last values
       lastValue = null;
       newNoteLoad = true;
@@ -65,36 +70,37 @@ document.addEventListener("DOMContentLoaded", function(event) {
     workingNote = note;
 
     // Only update UI on non-metadata updates.
-    if(note.isMetadataUpdate) {
+    if (note.isMetadataUpdate) {
       return;
     }
 
     clientData = note.clientData;
-    var newText = note.content.text;
+    let newText = note.content.text;
 
-    if(newText == lastValue) {
+    if (newText == lastValue) {
       return;
     }
 
-    var summernote = $('#summernote');
-    if(summernote) {
+    const summernote = $('#summernote');
+    if (summernote) {
       ignoreTextChange = true;
-      var isHtml = /<[a-z][\s\S]*>/i.test(newText);
+      const isHtml = /<[a-z][\s\S]*>/i.test(newText);
 
-      if(!didToggleFullScreen) {
+      if (!didToggleFullScreen) {
         $('#summernote').summernote('fullscreen.toggle');
         didToggleFullScreen = true;
       }
 
-      if(newNoteLoad && !isHtml) {
+      if (newNoteLoad && !isHtml) {
         newText = textToHTML(newText);
       }
 
       summernote.summernote('code', newText);
 
-      if(newNoteLoad) {
-        // Clears history but keeps note contents. Note that this line will triggera summernote.change event,
-        // so be sure to do this inside a `ignoreTextChange` block
+      if (newNoteLoad) {
+        // Clears history but keeps note contents. Note that this line will
+        // trigger a summernote.change event, so be sure to do this inside a
+        // `ignoreTextChange` block.
         $('#summernote').summernote('commit');
         newNoteLoad = false;
       }
@@ -105,12 +111,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function loadEditor() {
     $('#summernote').summernote({
-      height: 500,                      // set editor height
-      minHeight: null,                  // set minimum height of editor
-      maxHeight: null,                  // set maximum height of editor
-      focus: true,                      // set focus to editable area after initializing summernote
-      tabDisable: true,                 // set tab interaction to note only
-      showDomainOnlyForAutolink: false, // set autolink to preserve entire link 
+      height: 500, // set editor height
+      minHeight: null, // set minimum height of editor
+      maxHeight: null, // set maximum height of editor
+      focus: true, // set focus to editable area after initializing summernote
+      tabDisable: true, // set tab interaction to note only
+      showDomainOnlyForAutolink: false, // set autolink to preserve whole link
       toolbar: [
         // [groupName, [list of button]]
         ['para', ['style']],
@@ -122,21 +128,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
         ['insert', ['table', 'link', 'hr', 'picture', 'video']],
         ['misc', ['codeview', 'help']]
       ],
-      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica Neue',
-        'Helvetica', 'Impact', 'Lucida Grande', 'Monospace', 'Roboto', 'system-ui', 'Tahoma',
-        'Times New Roman', 'Verdana'],
+      fontNames: [
+        'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
+        'Helvetica Neue', 'Helvetica', 'Impact', 'Lucida Grande', 'Monospace',
+        'Roboto', 'system-ui', 'Tahoma', 'Times New Roman', 'Verdana'
+      ],
       callbacks: {
-        onInit: function() {},
+        onInit: function () {},
         onImageUpload: function (files) {
-          alert("Until we can encrypt image files, uploads are not currently supported. We recommend using the Image button in the toolbar and copying an image URL instead.")
+          alert("Until we can encrypt image files, uploads are not currently "
+            + "supported. We recommend using the Image button in the toolbar "
+            + "and copying an image URL instead.");
         }
       }
     });
 
     // summernote.change
-    $('#summernote').on('summernote.change', function(we, contents, $editable) {
+    $('#summernote').on('summernote.change', function (we, contents, $editable) {
       $('.note-editable *').attr("dir", "auto");
-      if(!ignoreTextChange) {
+      if (!ignoreTextChange) {
         save();
       }
     });
@@ -150,7 +160,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   loadComponentManager();
 
   function textToHTML(text) {
-    return ((text || "") + "").replace(/\t/g, "    ").replace(/\r\n|\r|\n/g, "<br />");
+    return ((text || "") + "")
+    .replace(/\t/g, "    ")
+    .replace(/\r\n|\r|\n/g, "<br />");
   }
 
 });

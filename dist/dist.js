@@ -701,16 +701,20 @@ if (window) {
 
 document.addEventListener("DOMContentLoaded", function (event) {
 
-  var componentManager;
-  var workingNote, clientData;
-  var lastValue, lastUUID;
-  var editor;
+  var componentManager = void 0;
+  var workingNote = void 0,
+      clientData = void 0;
+  var lastValue = void 0,
+      lastUUID = void 0;
+  var editor = void 0;
   var ignoreTextChange = false;
   var newNoteLoad = true,
       didToggleFullScreen = false;
 
   function loadComponentManager() {
-    var permissions = [{ name: "stream-context-item" }];
+    var permissions = [{
+      name: "stream-context-item"
+    }];
     componentManager = new ComponentManager(permissions, function () {
       // on ready
       var platform = componentManager.platform;
@@ -742,9 +746,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   function save() {
     if (workingNote) {
-      // Be sure to capture this object as a variable, as workingNote may be reassigned in `streamContextItem`, so by the time
-      // you modify it in the presave block, it may not be the same object anymore, so the presave values will not be applied to
-      // the right object, and it will save incorrectly.
+      // Be sure to capture this object as a variable, as workingNote may be
+      // reassigned in `streamContextItem`, so by the time you modify it in
+      // the presave block, it may not be the same object anymore, so the
+      // presave values will not be applied to the right object, and it will
+      // save incorrectly.
       var note = workingNote;
 
       componentManager.saveItemWithPresave(note, function () {
@@ -797,8 +803,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
       summernote.summernote('code', newText);
 
       if (newNoteLoad) {
-        // Clears history but keeps note contents. Note that this line will triggera summernote.change event,
-        // so be sure to do this inside a `ignoreTextChange` block
+        // Clears history but keeps note contents. Note that this line will
+        // trigger a summernote.change event, so be sure to do this inside a
+        // `ignoreTextChange` block.
         $('#summernote').summernote('commit');
         newNoteLoad = false;
       }
@@ -814,7 +821,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       maxHeight: null, // set maximum height of editor
       focus: true, // set focus to editable area after initializing summernote
       tabDisable: true, // set tab interaction to note only
-      showDomainOnlyForAutolink: false, // set autolink to preserve entire link 
+      showDomainOnlyForAutolink: false, // set autolink to preserve whole link
       toolbar: [
       // [groupName, [list of button]]
       ['para', ['style']], ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']], ['fontsize', ['fontsize', 'fontname']], ['color', ['color']], ['para', ['ul', 'ol', 'paragraph']], ['height', ['height']], ['insert', ['table', 'link', 'hr', 'picture', 'video']], ['misc', ['codeview', 'help']]],
@@ -822,7 +829,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       callbacks: {
         onInit: function onInit() {},
         onImageUpload: function onImageUpload(files) {
-          alert("Until we can encrypt image files, uploads are not currently supported. We recommend using the Image button in the toolbar and copying an image URL instead.");
+          alert("Until we can encrypt image files, uploads are not currently " + "supported. We recommend using the Image button in the toolbar " + "and copying an image URL instead.");
         }
       }
     });

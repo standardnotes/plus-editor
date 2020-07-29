@@ -711,7 +711,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
   var newNoteLoad = true,
       didToggleFullScreen = false;
 
-  // Keep this variable up top so that it only needs to be loaded once.
   var blockString = ['address', 'article', 'aside', 'blockquote', 'details', 'dialog', 'dd', 'div', 'dl', 'dt', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'header', 'hgroup', 'hr', 'li', 'main', 'nav', 'ol', 'p', 'pre', 'section', 'table', 'ul'].join(', ');
 
   function loadComponentManager() {

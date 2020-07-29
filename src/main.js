@@ -7,8 +7,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   let ignoreTextChange = false;
   let newNoteLoad = true,
     didToggleFullScreen = false;
-  
-  // Keep this variable up top so that it only needs to be loaded once.
+
   const blockString = [
     'address', 'article', 'aside', 'blockquote', 'details', 'dialog', 'dd',
     'div', 'dl', 'dt', 'fieldset', 'figcaption', 'figure', 'footer', 'form',
@@ -157,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       // Add RTL support when block-level elements are detect onchange.
       document.querySelectorAll(blockString)
       .forEach(element => element.setAttribute('dir', 'auto'));
-      
+
       if (!ignoreTextChange) {
         save();
       }

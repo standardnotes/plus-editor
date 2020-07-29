@@ -697,7 +697,7 @@ if (window) {
 }
 //# sourceMappingURL=dist.js.map
 ;(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-"use strict";
+'use strict';
 
 document.addEventListener("DOMContentLoaded", function (event) {
 
@@ -710,6 +710,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   var ignoreTextChange = false;
   var newNoteLoad = true,
       didToggleFullScreen = false;
+
+  // Keep this variable up top so that it only needs to be loaded once.
+  var blockString = ['address', 'article', 'aside', 'blockquote', 'details', 'dialog', 'dd', 'div', 'dl', 'dt', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'header', 'hgroup', 'hr', 'li', 'main', 'nav', 'ol', 'p', 'pre', 'section', 'table', 'ul'].join(', ');
 
   function loadComponentManager() {
     var permissions = [{
@@ -836,7 +839,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     // summernote.change
     $('#summernote').on('summernote.change', function (we, contents, $editable) {
-      $('.note-editable *').attr("dir", "auto");
+
+      // Add RTL support when block-level elements are detect onchange.
+      document.querySelectorAll(blockString).forEach(function (element) {
+        return element.setAttribute('dir', 'auto');
+      });
+
       if (!ignoreTextChange) {
         save();
       }

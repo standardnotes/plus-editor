@@ -8,7 +8,7 @@ The Plus Editor is a Standard Notes derived editor that is perfect for crafting 
 
 Use your browser to see the Plus Editor in action.
 
-1. `npm i` for dependencies
+1. `yarn` for dependencies
    
 2. `grunt` to build
 
@@ -21,7 +21,7 @@ See the editor in the desktop app and make changes to the code.
 1. Use `git clone --recursive` to clone the [plus-editor](https://github.com/sn-extensions/plus-editor) repository from GitHub. Note the importance of `--recursive`, as there is a Summernote submodule that needs to be cloned as well.
    * If the plus-editor repository has already been cloned, switch to the `vendor` folder and run `git submodule update --init --recursive`
    
-2. `npm i` for dependencies
+2. `yarn` for dependencies
    
 3. `grunt` to build
 

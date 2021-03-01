@@ -1,5 +1,6 @@
 const { merge } = require('webpack-merge');
 const config = require('./webpack.config.js');
+const path = require('path');
 
 module.exports = merge(config, {
   mode: 'development',
@@ -8,6 +9,8 @@ module.exports = merge(config, {
     colors: true
   },
   devServer: {
+    port: 8001,
+    contentBase: path.join(__dirname, 'dist'),
     disableHostCheck: true,
     historyApiFallback: true,
     watchOptions: { aggregateTimeout: 300, poll: 1000 },

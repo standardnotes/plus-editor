@@ -1,6 +1,7 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const MergeIntoSingleFilePlugin = require("webpack-merge-and-include-globally");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: [
@@ -50,6 +51,10 @@ module.exports = {
           'node_modules/summernote/dist/summernote.min.css'
         ]
       }
+    }),
+    new HtmlWebpackPlugin({
+      title: "Plus Editor",
+      template: "editor.index.ejs"
     })
   ],
 };

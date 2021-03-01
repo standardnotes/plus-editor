@@ -151,7 +151,8 @@ document.addEventListener('DOMContentLoaded', function () {
             + 'supported. We recommend using the Image button in the toolbar '
             + 'and copying an image URL instead.');
         }
-      }
+      },
+      codeviewFilter: true
     });
 
     // summernote.change

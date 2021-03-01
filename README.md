@@ -11,7 +11,7 @@ Use your browser to see the Plus Editor in action.
 1. Clone this repository
 1. Run `yarn` to install dependencies
 1. Run `yarn start` to start local dev server
-1. Open `http://localhost:8080/index.html` in your browser
+1. Open `http://localhost:8001` in your browser
 
 ## Contributing
 

@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', function () {
   let newNoteLoad = true,
     didToggleFullScreen = false;
 
+  DOMPurify.setConfig({
+    USE_PROFILES: {
+      html: true
+    },
+    FORCE_BODY: true
+  });
+
   const blockString = [
     'address', 'article', 'aside', 'blockquote', 'details', 'dialog', 'dd',
     'div', 'dl', 'dt', 'fieldset', 'figcaption', 'figure', 'footer', 'form',
@@ -152,7 +159,6 @@ document.addEventListener('DOMContentLoaded', function () {
             + 'and copying an image URL instead.');
         }
       },
-      codeviewFilter: true,
       buttons: {
         'custom-codeview': function(context) {
           const ui = $.summernote.ui;

@@ -121,6 +121,8 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
           renderNote = currentNotePreferences.trustUnsafeContent || false;
         }
+      } else {
+        renderNote = true;
       }
 
       /**

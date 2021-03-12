@@ -114,12 +114,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!currentNotePreferences) {
           showUnsafeContentAlert().then((result) => {
             if (result) {
-              setNotePreferences('renderNote', result);
+              setNotePreferences('trustUnsafeContent', result);
               renderNote = result;
             }
           });
         } else {
-          renderNote = currentNotePreferences.renderNote || false;
+          renderNote = currentNotePreferences.trustUnsafeContent || false;
         }
       }
 

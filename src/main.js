@@ -107,9 +107,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       let renderNote = false;
-      const isSafeContent = checkIfSafeContent(newText);
+      const isUnsafeContent = checkIfUnsafeContent(newText);
 
-      if (isSafeContent) {
+      if (isUnsafeContent) {
         const currentNotePreferences = getCurrentNotePreferences();
         if (!currentNotePreferences) {
           showUnsafeContentAlert().then((result) => {
@@ -165,11 +165,12 @@ document.addEventListener('DOMContentLoaded', function () {
     componentRelay.setComponentDataValueForKey('notes', notesPreferences);
   }
 
-  function checkIfSafeContent(content) {
-    if (!content) {
-      return false;
-    }
-    return true;
+  /**
+   * Checks if the content contains at least one script tag.
+   */
+  function checkIfUnsafeContent(content) {
+    const doc = new DOMParser().parseFromString(`<body>${content}</body>`, 'text/html');
+    return Array.from(doc.body.childNodes).some(node => node.nodeName == 'SCRIPT');
   }
 
   function showUnsafeContentAlert() {
